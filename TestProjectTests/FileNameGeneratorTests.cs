@@ -12,7 +12,6 @@ namespace TestProject.Tests
     public class FileNameGeneratorTests
     {
         
-
         [TestMethod()]
         public void generateFilenameTest_newFile()
         {
@@ -20,12 +19,13 @@ namespace TestProject.Tests
             FileNameGenerator fileNameGenerator = new FileNameGenerator();
 
             String expectedFileName = "file.pdf";
+            int expectedRevisionId = 0;
 
-            String fileName = fileNameGenerator.generateFilename(expectedFileName);
+            String expectedFullFilename = String.Format("{0}{1}.pdf", expectedFileName, expectedRevisionId > 0 ? "_" + expectedRevisionId : "");
 
-            bool result = fileName == expectedFileName;
+            String fileName = fileNameGenerator.GenerateFilename(expectedFileName, expectedRevisionId);
 
-            Console.WriteLine(result.ToString());
+            bool result = fileName == expectedFullFilename;
 
             Assert.IsFalse(result, result.ToString());
         }
