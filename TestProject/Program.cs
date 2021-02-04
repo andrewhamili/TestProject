@@ -15,13 +15,24 @@ namespace TestProject
         {
 
             String fileName = "";
+            int revisionId = 0;
 
             while (fileName != "end")
             {
-                Console.Write("Input filename: ");
-                fileName = Console.ReadLine();
-                Console.WriteLine();
-                Console.WriteLine(fileNameGenerator.generateFilename(fileName));
+                try
+                {
+                    Console.Write("Input filename: ");
+                    fileName = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Write("Input revision ID: ");
+                    revisionId = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    Console.WriteLine(fileNameGenerator.GenerateFilename(fileName, revisionId));
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
 
         }
